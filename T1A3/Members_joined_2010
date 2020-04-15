@@ -1,4 +1,6 @@
-mysql -u awkologist -p compbiol -e 
-'select m.LastName, m.FirstName
+#Please run this piece when already logged in in mysql
+# First run mysql -u awkologist -p compbiol and fill in the password
+# then run this piece: 
+select m.LastName, m.FirstName
 From Member m
-where m.JoinDate>'2010-01-01' and m.JoinDate<'2010-31-12''
+where m.JoinDate>'2010-01-01' and m.JoinDate<'2010-31-12';
