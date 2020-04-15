@@ -1,0 +1,2 @@
+mysql -u awkologist -p compbiol -e 
+'join -j 1 -o 1.1,2.2,1.2 test.txt test2.txt'
