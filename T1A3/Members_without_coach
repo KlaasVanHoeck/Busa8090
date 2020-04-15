@@ -1,3 +1,4 @@
-mysql -u awkologist -p compbiol -e 
-'select m.LastName, m.FirstName
-From Member m where m.Coach is null'
+mysql -u awkologist -p compbiol -e '
+select m.LastName, m.FirstName
+From Member m where m.Coach is null
+'
