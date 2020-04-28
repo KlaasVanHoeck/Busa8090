@@ -1,0 +1,14 @@
+## Question 2 A #
+
+wget https://downloads.mysql.com/docs/world_x-db.zip
+sudo apt install unzip
+unzip world_x-db.zip
+sudo mysql -u root
+source ./world_x.sql
+
+
+## Question 2 B ## (already in MySQL with "sudo mysql -u root")
+
+Select a.name, c.percentage, a.capital 
+from countrylanguage c inner join country a on c.countrycode=a.code 
+where percentage>50 and Language ="English";
