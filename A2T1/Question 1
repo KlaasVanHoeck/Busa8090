@@ -1,0 +1,16 @@
+## creating the needed files (already done in T1A3)##
+
+mysql -u awkologist -p compbiol -e '
+select * from expression order by gene;' > expression.tab
+
+mysql -u awkologist -p compbiol -e '
+select * from annotation order by gene;' > annotation.tab
+
+## Question 1 A ##
+awk '$2 < 1000' expression.tab 
+
+## Question 1 B ##
+awk '/ase/ {print}' annotation.tab
+
+## Question 1 C ##
+awk '/Purine biosynthesis/ || /Pyrimidine biosynthesis/ {print}' annotation.tab
