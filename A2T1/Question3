@@ -1,0 +1,2 @@
+ggplot(dat, aes(x=reorder(Country, DeathsPer100kPop), y=DeathsPer100kPop))+ labs(title = "German efficiency", subtitle = "Covid-19 deaths per 100,000 population
++ Europe, selected countries, to April 28th 2020", caption = "Sources: John Hopkins University, CSSE;PHE/NHS") + geom_col(fill="royalblue2") + coord_flip() + xlab("")+ ylab("") + theme(panel.background = element_blank(), panel.grid.major.y = element_blank(),panel.grid.major.x = element_line( size=1, color="grey"), plot.caption=element_text(hjust=0, color="grey")) + guides(x = guide_axis(position = 'top'))
