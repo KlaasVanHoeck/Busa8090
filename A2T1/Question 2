@@ -8,7 +8,8 @@ source ./world_x.sql
 
 
 ## Question 2 B ## (already in MySQL with "sudo mysql -u root")
-
-Select a.name, c.percentage, a.capital 
-from countrylanguage c inner join country a on c.countrycode=a.code 
+use world_x
+Select b.name, a.percentage, c.name
+from countrylanguage a inner join country b on a.countrycode=b.code 
+inner join city c on b.capital=c.id
 where percentage>50 and Language ="English";
