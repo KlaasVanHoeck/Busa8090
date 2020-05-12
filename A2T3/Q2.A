@@ -1,0 +1,20 @@
+# install these three packages (probably already installed when you followed the seminars)
+install.packages("maps")
+install.packages("WDI")
+install.packages("countrycode")
+
+# load the needed libraries
+library(countrycode)
+library(maps)
+library(WDI)
+library(ggplot2)
+library(dplyr)
+
+# Creating the map
+wdi_CO2_2014 <- WDI(indicator=c("EN.ATM.CO2E.PC"),start=2014,end=2014,extra=TRUE)
+wdi_CO2_2014 <- wdi_CO2_2014 %>% rename(Emit_CO2percap=EN.ATM.CO2E.PC)
+dat_map <- map_data("world")
+dat_map$ccode<- countrycode(dat_map$region,origin="country.name",destination="wb")
+wdi_CO2_2014$ccode <- countrycode(wdi_CO2_2014$country,origin="country.name",destination="wb")
+merged <- full_join(dat_map, wdi_CO2_2014, by="ccode")
+ggplot(merged,aes(x=long,y=lat,group=group,fill=Emit_CO2percap))+geom_polygon()
