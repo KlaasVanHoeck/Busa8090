@@ -18,4 +18,13 @@ dat_map <- map_data("world")
 dat_map$ccode<- countrycode(dat_map$region,origin="country.name",destination="wb")
 wdi_CO2_2014$ccode <- countrycode(wdi_CO2_2014$country,origin="country.name",destination="wb")
 merged <- full_join(dat_map, wdi_CO2_2014, by="ccode")
-ggplot(merged,aes(x=long,y=lat,group=group,fill=Emit_CO2percap))+geom_polygon()
+
+ggplot(merged,aes(x=long,y=lat,group=group,fill=Emit_CO2percap))+
+geom_polygon()+ 
+labs(fill="CO2 emission 
+(metric tons per capita)") + 
+scale_x_continuous(name="Longitude") + 
+scale_y_continuous(name="Latitude") + 
+theme_light() + 
+scale_fill_gradient(low="green", high="red")
+
