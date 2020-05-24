@@ -1,0 +1,19 @@
+#import dataset .xlsx 
+# Data on https://www.vlaamseregulatormedia.be/nl/tekstuele-beschrijving-figuur-53-2017
+
+library(ggplot2)
+library(reshape2)
+
+Data<- melt(DataGraph, id=c("Krant", "Jaar"))
+ggplot(data = Data, aes(x= Jaar, y= value, fill=variable)) + geom_bar(width= 0.4, position="stack", stat="identity") + 
+facet_grid(. ~ Krant, switch="x") + 
+theme(axis.text.x = element_text(angle = 90),
+panel.background = element_rect(fill = "transparent"), 
+panel.grid.major.x = element_blank() ,
+panel.grid.major.y = element_line( size=.1, color="black" ),
+panel.spacing = unit(0, "lines"),
+strip.placement = "outside",
+strip.background = element_rect(fill = "transparent")) + 
+scale_x_continuous(breaks = seq(2011,2016,1), name = "Year") + 
+scale_y_continuous(name = "Payed distribution", breaks = seq(0,300000,50000)) + 
+scale_fill_manual(values=c("#9CC2F1", "#2977F5"), labels = c("Digital", "Print"), name = "" )
