@@ -1,0 +1,16 @@
+library(ggplot2)
+library(reshape2)
+
+ggplot(data= Data, aes(x=Jaar, y=NoSN)) + 
+geom_line(aes(color = Krant)) +  geom_hline(yintercept =0, colour="black") +
+facet_wrap(.~ variable, scales="free_y",ncol=1) + 
+scale_colour_discrete("Newspapers") +
+theme(
+    axis.text.x = element_text(angle = 90),
+    strip.placement = "outside",
+    panel.background = element_rect(fill = "transparent"), 
+    panel.grid.major.x = element_blank() ,
+    panel.grid.major.y = element_line( size=.1, color="black"),
+    strip.background=element_rect(fill = "transparent")) + 
+scale_y_continuous(name="Number of Sold Newspapers", labels = scales::comma) + 
+scale_x_continuous(breaks = seq(2011,2016,1), name = "Year") 
