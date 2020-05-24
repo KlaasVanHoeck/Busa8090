@@ -1,7 +1,11 @@
+#import dataset .xlsx 
+# Data on https://www.vlaamseregulatormedia.be/nl/tekstuele-beschrijving-figuur-53-2017 or this github
+
 library(ggplot2)
 library(reshape2)
 
-ggplot(data= Data, aes(x=Jaar, y=NoSN)) + 
+Data<- melt(DataGraph, id=c("Krant", "Jaar"))
+ggplot(data= Data, aes(x=Jaar, y=value)) + 
 geom_line(aes(color = Krant)) +  geom_hline(yintercept =0, colour="black") +
 facet_wrap(.~ variable, scales="free_y",ncol=1) + 
 scale_colour_discrete("Newspapers") +
